@@ -1,0 +1,21 @@
+---
+- name: Tuesday Challenge
+  hosts: planetexpress
+  #connection: ansible.netcommon.network_cli
+  gather_facts: yes
+
+  tasks:
+    #   - name: creating a file
+    #  copy:
+    #  dest: challenge/challengefile.txt
+    #  content: "Success!"
+       
+   - name: create a directory
+     file: 
+       dest: challenge
+       state: directory
+
+   - name: creating a file
+     copy:
+       dest: challenge/challengefile.txt
+       content: "Success!"     
