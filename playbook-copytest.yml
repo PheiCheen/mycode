@@ -1,0 +1,16 @@
+---
+- name: Copying files from remote host to another location in remote hosts
+  hosts: planetexpress
+
+  tasks:
+    - name: make a directory
+      file:
+        path: ~/temp/
+        state: directory
+
+    - name: Copy Fry's resume to hosts
+      copy:
+        src: ~/fry.txt   # on the host
+        dest: ~/temp/moved.txt      # home directory on hosts
+        remote_src: yes
+
