@@ -28,8 +28,3 @@ sw-2
 
 [eosswitches:vars]
 ansible_network_os=eos
-
-[looneytunes]
-bugs        ansible_host=10.10.2.3 ansible_user=bender ansible_python_interpreter=/usr/bin/python3
-taz         ansible_host=10.10.2.4 ansible_user=fry ansible_python_interpreter=/usr/bin/python3
-daffy       ansible_host=10.10.2.5 ansible_user=zoidberg ansible_python_interpreter=/usr/bin/python3
