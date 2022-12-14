@@ -1,0 +1,29 @@
+---
+- name: A playbook showing the file module
+  hosts: looneytunes
+  connection: ssh    # use the connection plugin, ssh.py (this is the default)
+  gather_facts: no   # no need to define ansible_facts in this playbook
+
+  tasks:
+   - name: "Create directory called challenge"
+     become_user: root
+     become: true
+     file:
+        # the var "fileuser" is a host variable and defined in ~/mycode/inv/dev/hosts
+        path: "/home/{{ ansible_user }}/challenge/"
+        state: directory
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: "0755"
+
+   - get_url:
+      url: https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt
+      dest: challenge
+
+   - name: add PC's name
+     replace:
+        path: challenge/downloadme.txt
+        regexp: "PLACEHOLDER"
+        replace: "PC"
+        backup: yes
+     become: true
