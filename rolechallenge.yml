@@ -1,0 +1,9 @@
+---
+- name: Role Testing
+  hosts: fry
+  gather_facts: yes
+  become: true
+
+  roles:
+    - challenge
+
